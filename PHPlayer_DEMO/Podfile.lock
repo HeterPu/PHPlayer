@@ -1,0 +1,12 @@
+PODS:
+  - ijkplayer (1.1.2)
+
+DEPENDENCIES:
+  - ijkplayer (~> 1.1.2)
+
+SPEC CHECKSUMS:
+  ijkplayer: da342ca5262c25ed7166c5b73a94c1548496000e
+
+PODFILE CHECKSUM: 3068b49940f8af09a48f3ee6eb04ed7809893a0e
+
+COCOAPODS: 1.3.1

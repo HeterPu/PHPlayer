@@ -1,0 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+target 'PHPlayerDemo' do
+    pod 'ijkplayer', '~> 1.1.2'
+end
+
