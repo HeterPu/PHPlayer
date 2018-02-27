@@ -29,11 +29,11 @@
 		DB55CA2C20416D4300B8D9EE /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55CA2B20416D4300B8D9EE /* libbz2.tbd */; };
 		DB55CA2E2041715A00B8D9EE /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55CA2D2041715A00B8D9EE /* libstdc++.tbd */; };
 		DB55CA3D20450D1700B8D9EE /* PHPlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB55CA3A20450D1700B8D9EE /* PHPlayerControl.xib */; };
-		DB55CA3F20450D1700B8D9EE /* PH_Control_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55CA3C20450D1700B8D9EE /* PH_Control_Player.m */; };
 		DBB74BFE2045455E0000AFE2 /* miaobiao_h.MOV in Resources */ = {isa = PBXBuildFile; fileRef = DBB74BFD2045455E0000AFE2 /* miaobiao_h.MOV */; };
 		DBB74C0120457B740000AFE2 /* PH_Control_Custom_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB74C0020457B740000AFE2 /* PH_Control_Custom_Player.m */; };
-		DBB74C0420457DA30000AFE2 /* PHPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB74C0220457DA30000AFE2 /* PHPlayerControl.m */; };
 		DBB74C072045C6EB0000AFE2 /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB74C062045C6EB0000AFE2 /* ViewController1.m */; };
+		DBB74C0A2045CA840000AFE2 /* PH_Control_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB74C082045CA840000AFE2 /* PH_Control_Player.m */; };
+		DBB74C0D2045CA9B0000AFE2 /* PHPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB74C0C2045CA9B0000AFE2 /* PHPlayerControl.m */; };
 		F5E54BADA19941F48606085E /* libPods-PHPlayerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D75FFB209437F128AAE72546 /* libPods-PHPlayerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -67,16 +67,16 @@
 		DB55CA2920416D3100B8D9EE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DB55CA2B20416D4300B8D9EE /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		DB55CA2D2041715A00B8D9EE /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		DB55CA3820450D1700B8D9EE /* PH_Control_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Player.h; sourceTree = "<group>"; };
 		DB55CA3A20450D1700B8D9EE /* PHPlayerControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHPlayerControl.xib; sourceTree = "<group>"; };
-		DB55CA3C20450D1700B8D9EE /* PH_Control_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Player.m; sourceTree = "<group>"; };
 		DBB74BFD2045455E0000AFE2 /* miaobiao_h.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = miaobiao_h.MOV; sourceTree = "<group>"; };
 		DBB74BFF20457B740000AFE2 /* PH_Control_Custom_Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PH_Control_Custom_Player.h; sourceTree = "<group>"; };
 		DBB74C0020457B740000AFE2 /* PH_Control_Custom_Player.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Custom_Player.m; sourceTree = "<group>"; };
-		DBB74C0220457DA30000AFE2 /* PHPlayerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayerControl.m; sourceTree = "<group>"; };
-		DBB74C0320457DA30000AFE2 /* PHPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayerControl.h; sourceTree = "<group>"; };
 		DBB74C052045C6EB0000AFE2 /* ViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
 		DBB74C062045C6EB0000AFE2 /* ViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
+		DBB74C082045CA840000AFE2 /* PH_Control_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Player.m; sourceTree = "<group>"; };
+		DBB74C092045CA840000AFE2 /* PH_Control_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Player.h; sourceTree = "<group>"; };
+		DBB74C0B2045CA9B0000AFE2 /* PHPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayerControl.h; sourceTree = "<group>"; };
+		DBB74C0C2045CA9B0000AFE2 /* PHPlayerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayerControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +178,10 @@
 			isa = PBXGroup;
 			children = (
 				DB55CA3720450D1700B8D9EE /* Custom */,
+				DBB74C092045CA840000AFE2 /* PH_Control_Player.h */,
+				DBB74C082045CA840000AFE2 /* PH_Control_Player.m */,
 				DB55CA0D2041456000B8D9EE /* PHPlayer.h */,
 				DB55CA0E2041456000B8D9EE /* PHPlayer.m */,
-				DBB74C0320457DA30000AFE2 /* PHPlayerControl.h */,
-				DBB74C0220457DA30000AFE2 /* PHPlayerControl.m */,
 			);
 			path = PHPlayer;
 			sourceTree = "<group>";
@@ -189,8 +189,8 @@
 		DB55CA3720450D1700B8D9EE /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				DB55CA3820450D1700B8D9EE /* PH_Control_Player.h */,
-				DB55CA3C20450D1700B8D9EE /* PH_Control_Player.m */,
+				DBB74C0B2045CA9B0000AFE2 /* PHPlayerControl.h */,
+				DBB74C0C2045CA9B0000AFE2 /* PHPlayerControl.m */,
 				DB55CA3A20450D1700B8D9EE /* PHPlayerControl.xib */,
 				DBB74BFF20457B740000AFE2 /* PH_Control_Custom_Player.h */,
 				DBB74C0020457B740000AFE2 /* PH_Control_Custom_Player.m */,
@@ -325,14 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB55CA3F20450D1700B8D9EE /* PH_Control_Player.m in Sources */,
 				DB55C9FB2041439200B8D9EE /* ViewController.m in Sources */,
 				DB55CA062041439200B8D9EE /* main.m in Sources */,
+				DBB74C0D2045CA9B0000AFE2 /* PHPlayerControl.m in Sources */,
 				DB55CA0F2041456000B8D9EE /* PHPlayer.m in Sources */,
 				DBB74C072045C6EB0000AFE2 /* ViewController1.m in Sources */,
 				DBB74C0120457B740000AFE2 /* PH_Control_Custom_Player.m in Sources */,
 				DB55C9F82041439100B8D9EE /* AppDelegate.m in Sources */,
-				DBB74C0420457DA30000AFE2 /* PHPlayerControl.m in Sources */,
+				DBB74C0A2045CA840000AFE2 /* PH_Control_Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
