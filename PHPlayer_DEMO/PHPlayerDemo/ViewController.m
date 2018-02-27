@@ -12,7 +12,9 @@
 
 @interface ViewController ()
 
-@property(nonatomic,strong)PH_Control_Custom_Player *player;
+@property(nonatomic,strong)PHPlayer *player1;
+@property(nonatomic,strong)PH_Control_Player *player2;
+@property(nonatomic,strong)PH_Control_Custom_Player *player3;
 
 @end
 
@@ -28,51 +30,58 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-    
+    if (_index == 1) {
+        [self play1];
+    }else if (_index == 2){
+         [self play2];
+    }else{
+         [self play3];
+    }
+}
+
+
+-(void)play1{
     PHPlayerPlayOptions *options = [[PHPlayerPlayOptions alloc]init];
     options.playerType = PHPlayer_Type_FFPlayer;
     
     NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
     NSURL *urll = [NSURL fileURLWithPath:PATH];
-    _player = [PH_Control_Custom_Player playerWithFrame:CGRectMake(0, 50, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
-    _player.backgroundColor = [UIColor blackColor];
-    _player.startPlayTime = @(-1);
-    _player.endPlayTime = @(-1);
+    _player1 = [PHPlayer playerWithFrame:CGRectMake(0, 50, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player1.backgroundColor = [UIColor blackColor];
     
-    [self.view addSubview:_player];
-    
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(12.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_player pause];
-//
-    });
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_player play];
-        //
-    });
-    
-    
-    
-    
-    
-//
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        //
-//        [_player destoryPlayer];
-//        
-//    });
-//    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        //
-//        [_player reloadPlayer];
-//        
-//    });
-   
+    [self.view addSubview:_player1];
 }
+
+
+-(void)play2{
+    PHPlayerPlayOptions *options = [[PHPlayerPlayOptions alloc]init];
+    options.playerType = PHPlayer_Type_FFPlayer;
+    
+    NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
+    NSURL *urll = [NSURL fileURLWithPath:PATH];
+    _player2 = [PH_Control_Player playerWithFrame:CGRectMake(0, 50, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player2.backgroundColor = [UIColor blackColor];
+    _player2.startPlayTime = @(3);
+    _player2.endPlayTime = @(10);
+    
+    [self.view addSubview:_player2];
+}
+
+
+-(void)play3{
+    PHPlayerPlayOptions *options = [[PHPlayerPlayOptions alloc]init];
+    options.playerType = PHPlayer_Type_FFPlayer;
+    
+    NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
+    NSURL *urll = [NSURL fileURLWithPath:PATH];
+    _player3 = [PH_Control_Custom_Player playerWithFrame:CGRectMake(0, 50, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player3.backgroundColor = [UIColor blackColor];
+    _player3.startPlayTime = @(3);
+    _player3.endPlayTime = @(10);
+    
+    [self.view addSubview:_player3];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

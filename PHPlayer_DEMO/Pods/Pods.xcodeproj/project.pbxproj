@@ -22,7 +22,6 @@
 		C9A415A411CBADCDE2B968F18ACE9A68 /* Pods-PHPlayerDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PHPlayerDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		DB690AEF3BA9CFFE0E5E2AB9A45EC507 /* libPods-PHPlayerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-PHPlayerDemo.a"; path = "libPods-PHPlayerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41E54C482271E9685152CBFF451BF49 /* Pods-PHPlayerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PHPlayerDemo-dummy.m"; sourceTree = "<group>"; };
-		FF14FFAE3A0B988439DA7B79E98D3ACA /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,14 +44,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4A31143BB663BC9D96692586BBF6DF0E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7E33B8D1F5FA828B1F5F43E416757259 /* ijkplayer */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		683ADE16F26A462C8BC2A9498A545565 /* Pods-PHPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,27 +64,9 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				4A31143BB663BC9D96692586BBF6DF0E /* Pods */,
 				41B9D5696A4FE536B7C8A0003B2C9C83 /* Products */,
 				EBDC229AE8CEE446DE2803B885981231 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		7E33B8D1F5FA828B1F5F43E416757259 /* ijkplayer */ = {
-			isa = PBXGroup;
-			children = (
-				AFEA62FC98FE347FD2216B27247116DB /* Frameworks */,
-			);
-			name = ijkplayer;
-			path = ijkplayer;
-			sourceTree = "<group>";
-		};
-		AFEA62FC98FE347FD2216B27247116DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF14FFAE3A0B988439DA7B79E98D3ACA /* IJKMediaFramework.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {

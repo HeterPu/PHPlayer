@@ -10,20 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller1-->
         <scene sceneID="Fjy-VB-cTM">
             <objects>
-                <viewController id="omu-dx-X7M" sceneMemberID="viewController">
+                <viewController id="omu-dx-X7M" customClass="ViewController1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZA5-DW-bM8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pnm-eX-bGK">
-                                <rect key="frame" x="66" y="127" width="168" height="193"/>
+                                <rect key="frame" x="65" y="79" width="221" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="PHPlayer"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="wdu-V8-9Jw"/>
+                                    <action selector="PLAY1:" destination="omu-dx-X7M" eventType="touchUpInside" id="w7c-Ab-cvE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfg-Xp-LGf">
+                                <rect key="frame" x="77" y="248" width="197" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="PH_Control_Custom_Player"/>
+                                <connections>
+                                    <action selector="PLAY3:" destination="omu-dx-X7M" eventType="touchUpInside" id="r8x-KD-n7e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uab-qa-Pan">
+                                <rect key="frame" x="77" y="148" width="197" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="PH_Control_Player"/>
+                                <connections>
+                                    <action selector="PLAY2:" destination="omu-dx-X7M" eventType="touchUpInside" id="sN0-XQ-ai0"/>
                                 </connections>
                             </button>
                         </subviews>
