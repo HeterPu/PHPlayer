@@ -6,4 +6,4 @@ Demo Project
 ==============
 See `PHPlayerDemo/.xcodeproj`
 
-<img src="https://raw.github.com/HeterPu/PHPlayer/master/Screenshots/1.PNG" width="760"><br/>
+<img src="https://raw.github.com/HeterPu/PHPlayer/master/Screenshots/1.png" width="760"><br/>
