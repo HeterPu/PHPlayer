@@ -1,10 +1,8 @@
-//
-//  PHControlPlayer.m
-//  PHPlayerDemo
-//
-//  Created by Peter Hu on 2018/2/27.
+//  PHPlayer
+//  Created by Peter Hu on 2018/2/24.
 //  Copyright © 2018年 Peter Hu. All rights reserved.
-//
+//  Github:https://github.com/HeterPu/PHPlayer , like it,star it.
+
 
 #import "PH_Control_Player.h"
 
@@ -42,6 +40,11 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
  第一次设置播放器区间开始时间
  */
 @property(nonatomic,assign)BOOL isNotFirstSetCurrentTime;
+
+/**
+ 是否从开始播放的标记
+ */
+@property(nonatomic,assign)BOOL isPlayFromStart;
 
 /**
  设置播放器区间时,是否播放器暂停
@@ -181,6 +184,8 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
         //音量和亮度
         if (self.startPoint.x <= self.frame.size.width / 2.0) {
             //调节亮度
+            // 支不支持亮度调节
+             if (self.controlFunction & PHControlPlayer_function_BrightChange){
             if (panPoint.y < 0) {
                 //增加亮度
                 [[UIScreen mainScreen] setBrightness:self.startVB + (-panPoint.y / 30.0 / 10)];
@@ -188,9 +193,12 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
                 //减少亮度
                 [[UIScreen mainScreen] setBrightness:self.startVB - (panPoint.y / 30.0 / 10)];
             }
+        }
             
         } else {
             //音量
+            // 支不支持音量调节
+            if (self.controlFunction & PHControlPlayer_function_VolumnChange){
             if (panPoint.y < 0) {
                 //增大音量
                 [self.volumeViewSlider setValue:self.startVB + (-panPoint.y / 30.0 / 10) animated:YES];
@@ -203,6 +211,7 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
                 //减少音量
                 [self.volumeViewSlider setValue:self.startVB - (panPoint.y / 30.0 / 10) animated:YES];
             }
+          }
         }
     } else if (self.direction == PHPlayer_Gesture_DirectionLeftOrRight ) {
         //进度
@@ -234,7 +243,7 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
 
 
 -(void)player_playbackStatePlaying{
-    
+    [super player_playbackStatePlaying];
     if (self.startPlayTime) {
         CGFloat startTime = self.startPlayTime.floatValue;
         CGFloat endTime = self.endPlayTime.floatValue;
@@ -242,8 +251,9 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
         
         if (startTime > 0) {
             
-            if ((self.player.currentPlaybackTime < startTime)&&(!_isNotFirstSetCurrentTime)){
+            if (((self.player.currentPlaybackTime < startTime)&&(!_isNotFirstSetCurrentTime))||_isPlayFromStart){
                 _isNotFirstSetCurrentTime = true;
+                _isPlayFromStart = false;
                 self.player.currentPlaybackTime = startTime;
                 return;
             }
@@ -257,6 +267,12 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
             }
             _mQvJianTimer = [NSTimer scheduledTimerWithTimeInterval:offsetTime target:self selector:@selector(startSeekPlayer) userInfo:nil repeats:NO];
         }else{
+            
+            if (_isPlayFromStart) {
+                _isPlayFromStart = false;
+                self.player.currentPlaybackTime = 0.0;
+                return;
+            }
             // 结束时间不可超过视频总时长，留0.3时间防止视频播放完,完成后会重新播放，逻辑会变化
             if (((endTime + K_PHPLAYER_ENDTIME_OFFSET) > self.player.duration)||(endTime < 0))endTime = self.player.duration - K_PHPLAYER_ENDTIME_OFFSET;
             CGFloat offsetTime = endTime - startTime + (startTime - self.player.currentPlaybackTime);
@@ -271,6 +287,7 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
 
 
 -(void)player_playbackStatePaused{
+    [super player_playbackStatePaused];
     [_mQvJianTimer invalidate];
     _mQvJianTimer = nil;
 }
@@ -288,6 +305,10 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
         [_mQvJianTimer invalidate];
         _mQvJianTimer = nil;
     }
+}
+
+-(void)playFromStart{
+    _isPlayFromStart = true;
 }
 
 

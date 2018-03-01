@@ -1,14 +1,10 @@
-//
-//  PHPlayer.m
-//  PHPlayerDemo
-//
-//  Created by pidi on 2018/2/24.
+//  PHPlayer
+//  Created by Peter Hu on 2018/2/24.
 //  Copyright © 2018年 Peter Hu. All rights reserved.
-//
+//  Github:https://github.com/HeterPu/PHPlayer , like it,star it.
+
 
 #import "PHPlayer.h"
-#import <AVFoundation/AVFoundation.h>
-
 
 @implementation PHPlayerPlayOptions
 
@@ -35,6 +31,12 @@
 @property(nonatomic,strong)NSString * playUrl;
 
 @property(nonatomic,assign) BOOL isLoadFromLocal;
+
+
+/**
+ Stop player state in backGround
+ */
+@property(nonatomic,assign) BOOL playerIsPlayingBeforeEnterforeground;
 
 @end
 
@@ -140,7 +142,6 @@
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(player_seekCompleted_event) name:IJKMPMoviePlayerDidSeekCompleteNotification object:nil];
     
-    
     //网络监听
     [[NSNotificationCenter defaultCenter]addObserver:self
                                                 selector:@selector(player_netWorkStateChange_event:) name:[self getNetChangeNoticificationName]
@@ -151,19 +152,19 @@
     
     //应用进入前台
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(player_registActive_event:) name:@"applicationWillResignActive"
+                                                 selector:@selector(player_resignActive_event:) name:UIApplicationWillResignActiveNotification
                                                    object:nil];
     
     //应用进入后台
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(player_becomeActive_event:) name:@"applicationDidBecomeActive"
+                                                 selector:@selector(player_becomeActive_event:) name:UIApplicationDidBecomeActiveNotification
                                                    object:nil];
 }
 
 
 
 
--(void)UninstallNoticification{
+-(void)uninstallNoticification{
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:IJKMPMoviePlayerLoadStateDidChangeNotification
@@ -185,10 +186,10 @@
                                                     name:[self getNetChangeNoticificationName]
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"applicationWillResignActive"
+                                                    name:UIApplicationWillResignActiveNotification
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"applicationDidBecomeActive"
+                                                    name:UIApplicationDidBecomeActiveNotification
                                                   object:nil];
 }
 
@@ -245,6 +246,9 @@
 
 -(void)player_isPreparedToPlayDidChange_event:(NSNotification*)notification{
     NSLog(@"player_isPreparedToPlayDidChange_event");
+    if (self.mainStateDelegate&&[self.mainStateDelegate respondsToSelector:@selector(player_finishReasonUserExited)]) {
+        [self.mainStateDelegate player_isPreparedToPlayDidChange_event:notification];
+    }
 }
 
 -(void)player_playBackStateDidChange_event:(NSNotification*)notification{
@@ -288,14 +292,28 @@
 
 -(void)player_netWorkStateChange_event:(NSNotification*)notification{
     NSLog(@"player_netWorkStateChange_event");
+    if (self.mainStateDelegate&&[self.mainStateDelegate respondsToSelector:@selector(player_netWorkStateChange_event:)]) {
+        [self.mainStateDelegate player_netWorkStateChange_event:notification];
+    }
 }
 
--(void)player_registActive_event:(NSNotification*)notification{
-    NSLog(@"player_registActive_event");
+-(void)player_resignActive_event:(NSNotification*)notification{
+    NSLog(@"player_resignActive_event");
+    if (self.mainStateDelegate&&[self.mainStateDelegate respondsToSelector:@selector(player_resignActive_event:)]) {
+        [self.mainStateDelegate player_resignActive_event:notification];
+    }
+    if (self.player)if([self.player isPlaying])_playerIsPlayingBeforeEnterforeground = true;
 }
 
 -(void)player_becomeActive_event:(NSNotification*)notification{
     NSLog(@"player_becomeActive_event");
+    if (self.mainStateDelegate&&[self.mainStateDelegate respondsToSelector:@selector(player_becomeActive_event:)]) {
+        [self.mainStateDelegate player_becomeActive_event:notification];
+    }
+    if (self.player)if(![self.player isPlaying]&&_playerIsPlayingBeforeEnterforeground){
+        _playerIsPlayingBeforeEnterforeground = false;
+        [self.player play];
+    }
 }
 
 
@@ -324,6 +342,9 @@
 
 -(void)player_finishReasonPlaybackEnded{
     NSLog(@"player_finishReasonPlaybackEnded");
+    if (self.finishDelegate&&[self.finishDelegate respondsToSelector:@selector(player_finishReasonPlaybackEnded)]) {
+        [self.finishDelegate player_finishReasonPlaybackEnded];
+    }
     if (self.playOptions.isCirclePlay) {
         [self.player play];
     }
@@ -331,10 +352,16 @@
 
 -(void)player_finishReasonUserExited{
     NSLog(@"player_finishReasonUserExited");
+    if (self.finishDelegate&&[self.finishDelegate respondsToSelector:@selector(player_finishReasonUserExited)]) {
+        [self.finishDelegate player_finishReasonUserExited];
+    }
 }
 
 -(void)player_finishReasonPlaybackError{
     NSLog(@"player_finishReasonPlaybackError");
+    if (self.finishDelegate&&[self.finishDelegate respondsToSelector:@selector(player_finishReasonPlaybackError)]) {
+        [self.finishDelegate player_finishReasonPlaybackError];
+    }
 }
 
 
@@ -342,22 +369,50 @@
 
 -(void)player_playbackStateStopped{
     NSLog(@"player_playbackStateStopped");
+    if (self.stateDelegate&&[self.stateDelegate respondsToSelector:@selector(ph_PlayerWillPlay)]) {
+        [self.stateDelegate ph_PlayerWillStop];
+    }
+    
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStateStopped)]) {
+        [self.allStateDelegate player_playbackStateStopped];
+    }
 }
 
 -(void)player_playbackStatePlaying{
     NSLog(@"player_playbackStatePlaying");
+    if (self.stateDelegate&&[self.stateDelegate respondsToSelector:@selector(ph_PlayerWillPlay)]) {
+        [self.stateDelegate ph_PlayerWillPlay];
+    }
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStatePlaying)]) {
+        [self.allStateDelegate player_playbackStatePlaying];
+    }
 }
 -(void)player_playbackStatePaused{
     NSLog(@"player_playbackStatePaused");
+    if (self.stateDelegate&&[self.stateDelegate respondsToSelector:@selector(ph_PlayerWillPause)]) {
+        [self.stateDelegate ph_PlayerWillPause];
+    }
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStatePaused)]) {
+        [self.allStateDelegate player_playbackStatePaused];
+    }
 }
 -(void)player_playbackStateInterrupted{
     NSLog(@"player_playbackStateInterrupted");
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStateInterrupted)]) {
+        [self.allStateDelegate player_playbackStateInterrupted];
+    }
 }
 -(void)player_playbackStateSeekingForward{
     NSLog(@"player_playbackStateSeekingForward");
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStateSeekingForward)]) {
+        [self.allStateDelegate player_playbackStateSeekingForward];
+    }
 }
 -(void)player_playbackStateSeekingBackward{
     NSLog(@"player_playbackStateSeekingBackward");
+    if (self.allStateDelegate&&[self.allStateDelegate respondsToSelector:@selector(player_playbackStateSeekingBackward)]) {
+        [self.allStateDelegate player_playbackStateSeekingBackward];
+    }
 }
 
 #pragma mark ----------- Noticification  END
@@ -378,13 +433,17 @@
 
 -(void)pause{
     if (self.player&&[self.player isPlaying]) {
+        _playerIsPlayingBeforeEnterforeground = false;
         [self.player pause];
     }
 }
 
 -(void)destoryPlayer{
     if (self.player) {
-        [self UninstallNoticification];
+        if (self.stateDelegate&&[self.stateDelegate respondsToSelector:@selector(ph_PlayerWillDestory)]) {
+            [self.stateDelegate ph_PlayerWillDestory];
+        }
+        [self uninstallNoticification];
         [self.player shutdown];
         [self.player.view removeFromSuperview];
         self.player = nil;

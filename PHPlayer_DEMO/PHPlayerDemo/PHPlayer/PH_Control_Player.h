@@ -1,13 +1,10 @@
-//
-//  PH_Control_Player.h
-//  PHPlayerDemo
-//
-//  Created by Peter Hu on 2018/2/27.
+//  PHPlayer
+//  Created by Peter Hu on 2018/2/24.
 //  Copyright © 2018年 Peter Hu. All rights reserved.
-//
+//  Github:https://github.com/HeterPu/PHPlayer , like it,star it.
+
 
 #import "PHPlayer.h"
-
 
 /**
  Player Function Control(播放器功能控制)
@@ -51,6 +48,7 @@ typedef NS_OPTIONS(NSUInteger, PHControlPlayer_function){
 @property(nonatomic,strong)NSNumber *endPlayTime;
 
 
+
 #pragma mark -- For Private
 
 /**
@@ -59,5 +57,10 @@ typedef NS_OPTIONS(NSUInteger, PHControlPlayer_function){
  */
 -(void)player_tapClick:(id)sender;
 
+
+/**
+ 暂停后,从起始位置开始播放
+ */
+-(void)playFromStart;
 
 @end

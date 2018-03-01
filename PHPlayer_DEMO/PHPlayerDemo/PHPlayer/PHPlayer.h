@@ -1,10 +1,8 @@
-//
-//  PHPlayer.h
-//  PHPlayerDemo
-//
-//  Created by pidi on 2018/2/24.
+//  PHPlayer
+//  Created by Peter Hu on 2018/2/24.
 //  Copyright © 2018年 Peter Hu. All rights reserved.
-//
+//  Github:https://github.com/HeterPu/PHPlayer , like it,star it.
+
 
 #import <UIKit/UIKit.h>
 #import <IJKMediaFramework/IJKMediaFramework.h>
@@ -32,8 +30,9 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 };
 
 
-@interface PHPlayerPlayOptions : NSObject
+#pragma mark -- PHPlayerPlayOptions
 
+@interface PHPlayerPlayOptions : NSObject
 
 /**
  Is AutoPlay, default isAutoPlay = TRUE.
@@ -63,9 +62,11 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 @end;
 
 
+#pragma mark -- PHPlayerPlayStateDelegate
+
 
 /**
- Basic Player
+ Basic Player state delegate ,light wight ,more informatoin see
  */
 @protocol PHPlayerPlayStateDelegate <NSObject>
 
@@ -94,9 +95,86 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 
 
 
+#pragma mark -- PHPlayerMainStateDelegate
+
+/**
+ MainState Protocal About Going to play, App state , network
+ */
+@protocol PHPlayerMainStateDelegate <NSObject>
+
+@optional
+
+-(void)player_isPreparedToPlayDidChange_event:(NSNotification*)notification;
+
+
+-(void)player_netWorkStateChange_event:(NSNotification*)notification;
+
+
+-(void)player_resignActive_event:(NSNotification*)notification;
+
+
+-(void)player_becomeActive_event:(NSNotification*)notification;
+
+@end
+
+
+#pragma mark -- PHPlayerPlayBackFinishDelegate
+
+/**
+ MainState Protocal About Going to play, App state , network
+ */
+@protocol PHPlayerPlayBackFinishDelegate <NSObject>
+
+@optional
+-(void)player_finishReasonPlaybackEnded;
+
+-(void)player_finishReasonUserExited;
+
+-(void)player_finishReasonPlaybackError;
+
+@end
+
+
+#pragma mark -- PHPlayerPlayAllStateDelegate
+
+
+/**
+ AllPlayState Protocal incuding each play state.
+ */
+@protocol PHPlayerPlayAllStateDelegate <NSObject>
+
+@optional
+
+-(void)player_playbackStatePlaying;
+
+-(void)player_playbackStateStopped;
+
+-(void)player_playbackStatePaused;
+
+-(void)player_playbackStateInterrupted;
+
+-(void)player_playbackStateSeekingForward;
+
+-(void)player_playbackStateSeekingBackward;
+
+@end
+
+
+
+
+#pragma mark -- PHPlayer
+
 
 @interface PHPlayer : UIView
 
+
+/**
+(init Method)初始化播放器的类方法
+ @param frame frame size
+ @param url local url use (file:var...)
+ @param options Play Configuratoin
+ @return instance
+ */
 +(instancetype)playerWithFrame:(CGRect)frame contentOfUrl:(NSString *)url playOptions:(PHPlayerPlayOptions *)options;
 
 
@@ -105,11 +183,32 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
  */
 @property(nonatomic,readonly)PHPlayerPlayOptions *playOptions;
 
-
+/**
+ Real Player
+ */
 @property(nonatomic,readonly)id <IJKMediaPlayback> player;
 
+#pragma mark -- All Delegate
+/**
+ Play light state delegate.
+ */
+@property(assign,nonatomic)id<PHPlayerPlayStateDelegate> stateDelegate;
 
-#pragma mark -- Play Control start
+/**
+ Play light state delegate.
+ */
+@property(assign,nonatomic)id<PHPlayerPlayAllStateDelegate> allStateDelegate;
+
+/**
+ Play light state delegate.
+ */
+@property(assign,nonatomic)id<PHPlayerPlayBackFinishDelegate> finishDelegate;
+
+/**
+ Play light state delegate.
+ */
+@property(assign,nonatomic)id<PHPlayerMainStateDelegate> mainStateDelegate;
+
 
 /**
  Play
@@ -135,7 +234,10 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 -(void)reloadPlayer;
 
 
-#pragma mark -- Play Control end
+/**
+ Video is LoadFromNet or local.
+ */
+@property(nonatomic,readonly) BOOL isLoadFromLocal;
 
 
 #pragma mark -- Private For Subclassing
@@ -146,9 +248,7 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
  */
 -(void)configuration;
 
-
-// Noticification For SubClass Overriding Start
-
+// ---- Noticification For SubClass Overriding Start
 
 // Main State
 
@@ -156,7 +256,7 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 
 -(void)player_netWorkStateChange_event:(NSNotification*)notification;
 
--(void)player_registActive_event:(NSNotification*)notification;
+-(void)player_resignActive_event:(NSNotification*)notification;
 
 -(void)player_becomeActive_event:(NSNotification*)notification;
 
@@ -171,8 +271,8 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 
 -(void)player_loadStateUnknown;
 
-// PlayBackFinish sub state
 
+// PlayBackFinish sub state
 
 /**
  Deal with circle play logic, Subclassing must call " [super player_finishReasonPlaybackEnded];"
@@ -183,16 +283,15 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 
 -(void)player_finishReasonPlaybackError;
 
+
 // PlayBackStateChanged sub state
-
--(void)player_playbackStateStopped;
-
-
 
 /**
  When Player start play from a new startpoint,this method call,
  */
 -(void)player_playbackStatePlaying;
+
+-(void)player_playbackStateStopped;
 
 -(void)player_playbackStatePaused;
 
@@ -203,8 +302,7 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
 -(void)player_playbackStateSeekingBackward;
 
 
-// Noticification For SubClass Overriding End
-
+// ----- Noticification For SubClass Overriding End
 
 
 /**
@@ -213,13 +311,11 @@ typedef NS_ENUM(NSInteger, PHPlayer_Type) {
  */
 -(IJKFFOptions *)getDefaultFFPlayerOptions;
 
-
 /**
  Get Network change noticification name;
 
  @return Noticification Name
  */
 -(NSString *)getNetChangeNoticificationName;
-
 
 @end
