@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
   s.source_files  = "PHPlayer_DEMO/PHPlayerDemo/PHPlayer/**/*.{h,m,c,xib}"
   s.requires_arc = true
 
-  s.frameworks = 'Foundation', 'UIKit','ijkplayer'
+  s.frameworks = 'Foundation', 'UIKit'
+  s.dependency  'ijkplayer'
 end
