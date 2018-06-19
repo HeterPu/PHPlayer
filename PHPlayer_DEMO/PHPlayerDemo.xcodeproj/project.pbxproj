@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB08381820D8E50300F54414 /* PH_Control_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08381520D8E50200F54414 /* PH_Control_Player.m */; };
-		DB08381920D8E50300F54414 /* PHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08381720D8E50300F54414 /* PHPlayer.m */; };
-		DB08382020D8E51200F54414 /* PH_Control_Custom_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08381B20D8E51200F54414 /* PH_Control_Custom_Player.m */; };
-		DB08382120D8E51200F54414 /* PHPlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08381E20D8E51200F54414 /* PHPlayerControl.xib */; };
-		DB08382220D8E51200F54414 /* PHPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08381F20D8E51200F54414 /* PHPlayerControl.m */; };
+		DB08382E20D8F04000F54414 /* PHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08382520D8F04000F54414 /* PHPlayer.m */; };
+		DB08382F20D8F04000F54414 /* PH_Control_Custom_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08382720D8F04000F54414 /* PH_Control_Custom_Player.m */; };
+		DB08383020D8F04000F54414 /* PHPlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08382A20D8F04000F54414 /* PHPlayerControl.xib */; };
+		DB08383120D8F04000F54414 /* PHPlayerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08382B20D8F04000F54414 /* PHPlayerControl.m */; };
+		DB08383220D8F04000F54414 /* PH_Control_Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08382D20D8F04000F54414 /* PH_Control_Player.m */; };
 		DB55C9F82041439100B8D9EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55C9F72041439100B8D9EE /* AppDelegate.m */; };
 		DB55C9FB2041439200B8D9EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55C9FA2041439200B8D9EE /* ViewController.m */; };
 		DB55C9FE2041439200B8D9EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB55C9FC2041439200B8D9EE /* Main.storyboard */; };
@@ -41,15 +41,15 @@
 		C1EF817A2852C9A4ACB33458 /* Pods-PHPlayerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHPlayerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PHPlayerDemo/Pods-PHPlayerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D75FFB209437F128AAE72546 /* libPods-PHPlayerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PHPlayerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9539D6487E37F5C7D384866 /* Pods-PHPlayerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PHPlayerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PHPlayerDemo/Pods-PHPlayerDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		DB08381420D8E50200F54414 /* PHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayer.h; sourceTree = "<group>"; };
-		DB08381520D8E50200F54414 /* PH_Control_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Player.m; sourceTree = "<group>"; };
-		DB08381620D8E50300F54414 /* PH_Control_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Player.h; sourceTree = "<group>"; };
-		DB08381720D8E50300F54414 /* PHPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayer.m; sourceTree = "<group>"; };
-		DB08381B20D8E51200F54414 /* PH_Control_Custom_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Custom_Player.m; sourceTree = "<group>"; };
-		DB08381C20D8E51200F54414 /* PHPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayerControl.h; sourceTree = "<group>"; };
-		DB08381D20D8E51200F54414 /* PH_Control_Custom_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Custom_Player.h; sourceTree = "<group>"; };
-		DB08381E20D8E51200F54414 /* PHPlayerControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHPlayerControl.xib; sourceTree = "<group>"; };
-		DB08381F20D8E51200F54414 /* PHPlayerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayerControl.m; sourceTree = "<group>"; };
+		DB08382420D8F04000F54414 /* PH_Control_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Player.h; sourceTree = "<group>"; };
+		DB08382520D8F04000F54414 /* PHPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayer.m; sourceTree = "<group>"; };
+		DB08382720D8F04000F54414 /* PH_Control_Custom_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Custom_Player.m; sourceTree = "<group>"; };
+		DB08382820D8F04000F54414 /* PHPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayerControl.h; sourceTree = "<group>"; };
+		DB08382920D8F04000F54414 /* PH_Control_Custom_Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH_Control_Custom_Player.h; sourceTree = "<group>"; };
+		DB08382A20D8F04000F54414 /* PHPlayerControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHPlayerControl.xib; sourceTree = "<group>"; };
+		DB08382B20D8F04000F54414 /* PHPlayerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHPlayerControl.m; sourceTree = "<group>"; };
+		DB08382C20D8F04000F54414 /* PHPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHPlayer.h; sourceTree = "<group>"; };
+		DB08382D20D8F04000F54414 /* PH_Control_Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PH_Control_Player.m; sourceTree = "<group>"; };
 		DB55C9F32041439100B8D9EE /* PHPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB55C9F62041439100B8D9EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB55C9F72041439100B8D9EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,27 +136,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		DB08380420D8E40500F54414 /* PHPlayer */ = {
+		DB08382320D8F04000F54414 /* PHPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				DB08381A20D8E51200F54414 /* Custom */,
-				DB08381620D8E50300F54414 /* PH_Control_Player.h */,
-				DB08381520D8E50200F54414 /* PH_Control_Player.m */,
-				DB08381420D8E50200F54414 /* PHPlayer.h */,
-				DB08381720D8E50300F54414 /* PHPlayer.m */,
+				DB08382420D8F04000F54414 /* PH_Control_Player.h */,
+				DB08382520D8F04000F54414 /* PHPlayer.m */,
+				DB08382620D8F04000F54414 /* Custom */,
+				DB08382C20D8F04000F54414 /* PHPlayer.h */,
+				DB08382D20D8F04000F54414 /* PH_Control_Player.m */,
 			);
-			name = PHPlayer;
-			path = ../../../OTS/OTS/Libs/PHPlayer;
+			path = PHPlayer;
 			sourceTree = "<group>";
 		};
-		DB08381A20D8E51200F54414 /* Custom */ = {
+		DB08382620D8F04000F54414 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				DB08381B20D8E51200F54414 /* PH_Control_Custom_Player.m */,
-				DB08381C20D8E51200F54414 /* PHPlayerControl.h */,
-				DB08381D20D8E51200F54414 /* PH_Control_Custom_Player.h */,
-				DB08381E20D8E51200F54414 /* PHPlayerControl.xib */,
-				DB08381F20D8E51200F54414 /* PHPlayerControl.m */,
+				DB08382720D8F04000F54414 /* PH_Control_Custom_Player.m */,
+				DB08382820D8F04000F54414 /* PHPlayerControl.h */,
+				DB08382920D8F04000F54414 /* PH_Control_Custom_Player.h */,
+				DB08382A20D8F04000F54414 /* PHPlayerControl.xib */,
+				DB08382B20D8F04000F54414 /* PHPlayerControl.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -184,7 +183,7 @@
 		DB55C9F52041439100B8D9EE /* PHPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DB08380420D8E40500F54414 /* PHPlayer */,
+				DB08382320D8F04000F54414 /* PHPlayer */,
 				DBB74BFD2045455E0000AFE2 /* miaobiao_h.MOV */,
 				DB55C9F62041439100B8D9EE /* AppDelegate.h */,
 				DB55C9F72041439100B8D9EE /* AppDelegate.m */,
@@ -261,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB55CA032041439200B8D9EE /* LaunchScreen.storyboard in Resources */,
-				DB08382120D8E51200F54414 /* PHPlayerControl.xib in Resources */,
+				DB08383020D8F04000F54414 /* PHPlayerControl.xib in Resources */,
 				DBB74BFE2045455E0000AFE2 /* miaobiao_h.MOV in Resources */,
 				DB55CA002041439200B8D9EE /* Assets.xcassets in Resources */,
 				DB55C9FE2041439200B8D9EE /* Main.storyboard in Resources */,
@@ -326,14 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB08382E20D8F04000F54414 /* PHPlayer.m in Sources */,
 				DB55C9FB2041439200B8D9EE /* ViewController.m in Sources */,
+				DB08383220D8F04000F54414 /* PH_Control_Player.m in Sources */,
 				DB55CA062041439200B8D9EE /* main.m in Sources */,
-				DB08382220D8E51200F54414 /* PHPlayerControl.m in Sources */,
+				DB08382F20D8F04000F54414 /* PH_Control_Custom_Player.m in Sources */,
 				DBB74C072045C6EB0000AFE2 /* ViewController1.m in Sources */,
-				DB08381820D8E50300F54414 /* PH_Control_Player.m in Sources */,
-				DB08381920D8E50300F54414 /* PHPlayer.m in Sources */,
-				DB08382020D8E51200F54414 /* PH_Control_Custom_Player.m in Sources */,
 				DB55C9F82041439100B8D9EE /* AppDelegate.m in Sources */,
+				DB08383120D8F04000F54414 /* PHPlayerControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
