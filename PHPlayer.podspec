@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author             = { "HuterPu" => "wycgpeterhu@sina.com" }
   s.social_media_url   = "http://weibo.com/u/2342495990"
   s.source       = { :git => "https://github.com/HeterPu/PHPlayer.git", :tag => s.version }
-  s.source_files  = "PHPlayer_DEMO/PHPlayerDemo/PHPlayer/**/*.{h,m,c}"
+  s.source_files  = "PHPlayer_DEMO/PHPlayerDemo/PHPlayer/**/*.{h,m,c,xib}"
   s.requires_arc = true
 
   s.frameworks = 'Foundation', 'UIKit','ijkplayer'
