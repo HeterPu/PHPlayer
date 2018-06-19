@@ -10,7 +10,7 @@
 
 #import "PH_Control_Custom_Player.h"
 
-@interface ViewController ()
+@interface ViewController ()<PHPlayerPlayAllStateDelegate>
 
 @property(nonatomic,strong)PHPlayer *player1;
 @property(nonatomic,strong)PH_Control_Player *player2;
@@ -59,7 +59,7 @@
     
     NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
     NSURL *urll = [NSURL fileURLWithPath:PATH];
-    _player1 = [PHPlayer playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player1 = [PHPlayer playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options allStateDelegate:self];
     _player1.backgroundColor = [UIColor blackColor];
     
     [self.view addSubview:_player1];
@@ -72,7 +72,7 @@
     
     NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
     NSURL *urll = [NSURL fileURLWithPath:PATH];
-    _player2 = [PH_Control_Player playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player2 = [PH_Control_Player playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options allStateDelegate:self];
     _player2.backgroundColor = [UIColor blackColor];
     _player2.startPlayTime = @(3);
     _player2.endPlayTime = @(10);
@@ -87,7 +87,7 @@
     
     NSString *PATH = [[NSBundle mainBundle] pathForResource:@"miaobiao_h.MOV" ofType:nil];
     NSURL *urll = [NSURL fileURLWithPath:PATH];
-    _player3 = [PH_Control_Custom_Player playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options];
+    _player3 = [PH_Control_Custom_Player playerWithFrame:CGRectMake(0, 100, 350, 280) contentOfUrl:urll.absoluteString playOptions:options allStateDelegate:self];
     _player3.backgroundColor = [UIColor blackColor];
     _player3.startPlayTime = @(3);
     _player3.endPlayTime = @(10);
