@@ -199,19 +199,22 @@ typedef NS_ENUM(NSUInteger, PHPlayer_Gesture_Direction) {
             //音量
             // 支不支持音量调节
             if (self.controlFunction & PHControlPlayer_function_VolumnChange){
-            if (panPoint.y < 0) {
-                //增大音量
-                [self.volumeViewSlider setValue:self.startVB + (-panPoint.y / 30.0 / 10) animated:YES];
-                if (self.startVB + (-panPoint.y / 30 / 10) - self.volumeViewSlider.value >= 0.1) {
-                    [self.volumeViewSlider setValue:0.1 animated:NO];
-                    [self.volumeViewSlider setValue:self.startVB + (-panPoint.y / 30.0 / 10) animated:YES];
+                CGFloat volumeValue = self.startVB + (-panPoint.y / 30.0 / 10);
+                if (panPoint.y < 0) {
+                    //增大音量
+                    if (volumeValue >= 1) {
+                        volumeValue = 1.0;
+                    }
+                    [self.volumeViewSlider setValue:volumeValue animated:YES];
+                    if (volumeValue - self.volumeViewSlider.value >= 0.1) {
+                        [self.volumeViewSlider setValue:0.1 animated:NO];
+                        [self.volumeViewSlider setValue:volumeValue animated:YES];
+                    }
+                } else {
+                    //减少音量
+                    [self.volumeViewSlider setValue:volumeValue animated:YES];
                 }
-                
-            } else {
-                //减少音量
-                [self.volumeViewSlider setValue:self.startVB - (panPoint.y / 30.0 / 10) animated:YES];
             }
-          }
         }
     } else if (self.direction == PHPlayer_Gesture_DirectionLeftOrRight ) {
         //进度
